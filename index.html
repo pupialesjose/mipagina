@@ -10,10 +10,11 @@
     <header>
         <nav>
             <ul>
-                <li><a href="about.html">Sobre mí</a></li>
+                <li><a href="#about">Sobre mí</a></li>
                 <li><a href="#skills">Habilidades</a></li>
-                <li><a href="projects.html">Proyectos</a></li>
-                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#sandbox">Laboratorio</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -25,6 +26,15 @@
             <p>Especialista en automatización, contenedores y arquitecturas multi-cloud.</p>
         </section>
 
+        <section id="about">
+            <h2>Sobre mí</h2>
+            <p>
+                Ingeniero en Tecnologías de la Información (EPN) con Maestría en DevOps. 
+                Especializado en optimizar infraestructuras críticas y despliegues automáticos. 
+                En abril de 2026, defendí mi tesis sobre **Automatización Multi-Cloud CI/CD**.
+            </p>
+        </section>
+
         <section id="skills">
             <h2>Habilidades Técnicas</h2>
             <div class="skill-grid">
@@ -33,22 +43,33 @@
                 <span>Terraform</span>
                 <span>GitHub Actions</span>
                 <span>AWS/Azure</span>
+                <span>Jenkins</span>
             </div>
         </section>
 
         <section id="projects">
-            <h2>Proyectos Destacados</h2>
-            <!-- Aquí irán tus proyectos de la maestría y laboratorios -->
-            <div class="project-card">
-                <h3>Pipeline CI/CD Multi-Cloud</h3>
-                <p>Automatización de despliegues usando Jenkins y Terraform.</p>
-                <a href="https://github.com/pupialesjose/proyecto" target="_blank">Ver Código</a>
+            <h2>Proyectos Destacados (GitHub API)</h2>
+            <div id="github-projects" class="project-grid">
+                <!-- Se carga dinámicamente desde js/script.js -->
             </div>
+        </section>
+
+        <section id="sandbox">
+            <h2>Laboratorio Técnico</h2>
+            <p>Demostración de lógica y despliegue: Mini-juego clásico de Pac-Man.</p>
+            <a href="pacman.html" target="_blank" class="btn-primary">Ejecutar Pac-Man</a>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <p>Quito, Ecuador.</p>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a> | 
+            <a href="mailto:tu-email@correo.com">Email</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Jose Pupiales. Quito, Ecuador.</p>
+        <p>&copy; 2026 Jose Pupiales.</p>
     </footer>
 
     <script src="js/script.js"></script>

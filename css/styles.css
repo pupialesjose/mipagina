@@ -1,33 +1,46 @@
 :root {
     --bg-color: #0d1117;
+    --card-bg: #161b22;
     --text-color: #c9d1d9;
     --accent-color: #58a6ff;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: 'Segoe UI', system-ui, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0 5%;
 }
 
-header nav ul {
+header {
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(13, 17, 23, 0.9);
+    z-index: 1000;
+}
+
+nav ul {
     display: flex;
+    justify-content: flex-end;
     list-style: none;
     gap: 20px;
-    justify-content: flex-end;
 }
 
-header a {
+nav a {
     color: var(--accent-color);
     text-decoration: none;
+    font-weight: bold;
 }
 
-#hero {
-    text-align: center;
-    padding: 100px 0;
+section {
+    padding: 80px 0;
+    border-bottom: 1px solid #30363d;
 }
 
 .skill-grid {
@@ -37,8 +50,31 @@ header a {
 }
 
 .skill-grid span {
-    background: #21262d;
-    padding: 5px 15px;
-    border-radius: 20px;
+    background: var(--card-bg);
     border: 1px solid var(--accent-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
 }
