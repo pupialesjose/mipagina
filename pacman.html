@@ -4,30 +4,96 @@
     <meta charset="UTF-8">
     <title>Pac-Man Lab | Jose Pupiales</title>
     <style>
-        body { background: #0d1117; color: white; text-align: center; font-family: sans-serif; }
-        canvas { border: 2px solid #58a6ff; background: black; margin-top: 20px; }
-        .back-btn { display: inline-block; margin-top: 20px; color: #58a6ff; text-decoration: none; border: 1px solid #58a6ff; padding: 10px; border-radius: 5px; }
+        body { background: #0d1117; color: white; text-align: center; font-family: sans-serif; margin: 0; padding: 20px; }
+        canvas { border: 3px solid #58a6ff; background: black; box-shadow: 0 0 20px rgba(88, 166, 255, 0.2); }
+        .stats { font-size: 20px; margin-bottom: 10px; color: #58a6ff; }
     </style>
 </head>
 <body>
-    <h1>Laboratorio: Pac-Man JS</h1>
-    <p>Usa las flechas para moverte (Demo técnica)</p>
-    
-    <!-- Aquí iría la lógica del juego, por ahora un canvas de prueba -->
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-
+    <h1>Laboratorio: IA y Colisiones</h1>
+    <div class="stats">Puntos: <span id="score">0</span></div>
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
     <br>
-    <a href="index.html" class="back-btn">← Volver al Portafolio</a>
+    <a href="index.html" style="color: #58a6ff; text-decoration: none; border: 1px solid #58a6ff; padding: 10px; display: inline-block; margin-top: 20px;">← Volver al Portafolio</a>
 
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        // Dibujamos un Pac-Man estático para probar que carga
-        ctx.fillStyle = "yellow";
-        ctx.beginPath();
-        ctx.arc(200, 200, 50, 0.2 * Math.PI, 1.8 * Math.PI);
-        ctx.lineTo(200, 200);
-        ctx.fill();
+        const scoreElement = document.getElementById('score');
+
+        let score = 0;
+        let pacman = { x: 50, y: 50, size: 20, speed: 4 };
+        let ghost = { x: 500, y: 350, size: 20, speed: 2 };
+        let dots = [];
+
+        // Generar comida aleatoria
+        for(let i=0; i<20; i++) {
+            dots.push({ x: Math.random() * 580 + 10, y: Math.random() * 380 + 10 });
+        }
+
+        const keys = {};
+        window.onkeydown = e => keys[e.code] = true;
+        window.onkeyup = e => keys[e.code] = false;
+
+        function update() {
+            // Movimiento Pac-Man
+            if (keys['ArrowUp'] && pacman.y > pacman.size) pacman.y -= pacman.speed;
+            if (keys['ArrowDown'] && pacman.y < canvas.height - pacman.size) pacman.y += pacman.speed;
+            if (keys['ArrowLeft'] && pacman.x > pacman.size) pacman.x -= pacman.speed;
+            if (keys['ArrowRight'] && pacman.x < canvas.width - pacman.size) pacman.x += pacman.speed;
+
+            // IA del Fantasma (Persecución simple)
+            if (ghost.x < pacman.x) ghost.x += ghost.speed;
+            else ghost.x -= ghost.speed;
+            if (ghost.y < pacman.y) ghost.y += ghost.speed;
+            else ghost.y -= ghost.speed;
+
+            // Colisión con comida (Comer)
+            dots = dots.filter(dot => {
+                const dist = Math.hypot(pacman.x - dot.x, pacman.y - dot.y);
+                if (dist < pacman.size) {
+                    score += 10;
+                    scoreElement.innerText = score;
+                    return false;
+                }
+                return true;
+            });
+
+            // Colisión con fantasma (Game Over simple)
+            if (Math.hypot(pacman.x - ghost.x, pacman.y - ghost.y) < pacman.size + ghost.size) {
+                alert("¡Atrapado! Reiniciando laboratorio...");
+                location.reload();
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar comida
+            ctx.fillStyle = "white";
+            dots.forEach(dot => {
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, 4, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Dibujar Pac-Man
+            ctx.fillStyle = "yellow";
+            ctx.beginPath();
+            ctx.arc(pacman.x, pacman.y, pacman.size, 0.2 * Math.PI, 1.8 * Math.PI);
+            ctx.lineTo(pacman.x, pacman.y);
+            ctx.fill();
+
+            // Dibujar Fantasma
+            ctx.fillStyle = "red";
+            ctx.beginPath();
+            ctx.arc(ghost.x, ghost.y, ghost.size, 0, Math.PI * 2);
+            ctx.fill();
+
+            requestAnimationFrame(() => { update(); draw(); });
+        }
+
+        draw();
     </script>
 </body>
 </html>
