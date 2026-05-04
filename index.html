@@ -2,32 +2,55 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Jose Pupiales | DevOps</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Pupiales | Portafolio DevOps</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Mi Portafolio</a>
-        <div>
-            <a class="nav-link d-inline text-white" href="/mipagina/about.html">Sobre mí</a>
-            <a class="nav-link d-inline text-white" href="/mipagina/projects.html">Proyectos</a>
-            <a class="nav-link d-inline text-white" href="/mipagina/contact.html">Contacto</a>
-        </div>
-    </div>
-</nav>
+    <main>
+        <section id="hero">
+            <h1>Jose Pupiales</h1>
+            <p>Ingeniero de TI & DevOps | Cloud Infrastructure</p>
+            <p>Especialista en automatización, contenedores y arquitecturas multi-cloud.</p>
+        </section>
 
-<!-- Hero -->
-<div class="container text-center mt-5">
-    <h1>Hola, soy Jose 👨‍💻</h1>
-    <p class="lead">DevOps | Cloud | Automatización</p>
-</div>
+        <section id="skills">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skill-grid">
+                <span>Docker</span>
+                <span>Kubernetes</span>
+                <span>Terraform</span>
+                <span>GitHub Actions</span>
+                <span>AWS/Azure</span>
+            </div>
+        </section>
 
+        <section id="projects">
+            <h2>Proyectos Destacados</h2>
+            <!-- Aquí irán tus proyectos de la maestría y laboratorios -->
+            <div class="project-card">
+                <h3>Pipeline CI/CD Multi-Cloud</h3>
+                <p>Automatización de despliegues usando Jenkins y Terraform.</p>
+                <a href="https://github.com/tu-usuario/proyecto" target="_blank">Ver Código</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Jose Pupiales. Quito, Ecuador.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

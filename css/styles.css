@@ -1,7 +1,44 @@
-body {
-    background-color: #f8f9fa;
+:root {
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --accent-color: #58a6ff;
 }
 
-h1 {
-    color: #2c3e50;
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+header a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+#hero {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-grid span {
+    background: #21262d;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--accent-color);
 }
